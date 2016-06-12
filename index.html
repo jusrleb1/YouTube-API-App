@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Added link to the jQuery Library -->
+	<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+	<!--Added link to the Bootstrap CDN -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+	<!--<link rel="stylesheet" type="text/css" href="assets/css/reset.css">-->
+	<link rel="stylesheet" type="text/css" href="assets/css/spotify.css">
+	<script type="text/javascript" src="assets/javascript/spotify.js"></script>
+	<title>Spotify API</title>
+</head>
+<body>
+	<div class="container">
+	    <h2>Discography</h2>
+	    <form id="search-form">
+    <label for="keyword-input">Search an Artist</label>
+    <input type="text" id="keyword-input"><br>
+    
+    <input id="addKeyword" type="submit" value="Search an Artist">
+  </form>
+	    <p>Click an album cover to hear a 30 second preview, or click the button to play the album on Spotify!</p><br />
+	    <div id="results"></div>
+	</div>
+	<script id="results-template" type="text/x-handlebars-template">
+	    {{#each albums.items}}
+	    <div style="background-image:url({{images.0.url}})" data-album-id="{{id}}" class="cover"><a href="{{external_urls.spotify}}"><div class="spotify-button"><img src="https://developer.spotify.com/wp-content/uploads/2014/06/play_on_spotify-green.png" /></div></a></div>
+	    {{/each}}
+	</script>
+</body>
+</html>
+
+
+
