@@ -53,10 +53,10 @@ $(document).ready(function(){
 		        	var link = $('<p>');
 		        	link.attr('id', videoId);
 		        	link.on('click',onClick);
-		        	//link.text("[Play Video]").css('font-weight', 'bold');;
+		        	link.text("[Play Video]").css('font-weight', 'bold');;
 		        	//link.html('<a href="https://www.youtube.com/watch?v=' + videoId + '" target="_blank">Play Video</a>');
 		        	//link.html('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>');
-		        	link.html('<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/' + videoId + '?rel=0&"&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
+		        	
 		        	videoDiv.append(link);
 				} else if (results[key].id.channelId) {
 					console.log("channelId");
@@ -102,7 +102,8 @@ $(document).ready(function(){
 		console.log("clicked");
     	vidId = $(this).attr('id');
         console.log(vidId);
-        $('#'+vidId).html('<object type="application/x-shockwave-flash" width="262" height="25" data="https://www.youtube.com/v/' + vidId + '?version=2&autoplay=1&theme=dark"><param name="movie" value="https://www.youtube.com/v/' + vidId + '?version=2&autoplay=1&theme=dark" /><param name="wmode" value="transparent" /></object>');
+        $('#'+vidId).html('<iframe width="560" src="https://www.youtube-nocookie.com/embed/' + videoId + '?rel=0&"&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
+        //$('#'+vidId).html('<object type="application/x-shockwave-flash" width="262" height="25" data="https://www.youtube.com/v/' + vidId + '?version=2&autoplay=1&theme=dark"><param name="movie" value="https://www.youtube.com/v/' + vidId + '?version=2&autoplay=1&theme=dark" /><param name="wmode" value="transparent" /></object>');
 
 	 //  	// 2. This code loads the IFrame Player API code asynchronously.
 		// var tag = document.createElement('script');
