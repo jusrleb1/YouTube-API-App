@@ -50,10 +50,11 @@ $(document).ready(function(){
 		        	videoArray.push(videoId);
 		        	var pThree = $('<p>').text("VideoId: " + videoId).css('margin','1px');
 		        	videoDiv.append(pThree);
-		        	var link = $('<p>');
+		        	var link = $('<button>');
 		        	link.attr('id', videoId);
+		        	link.attr('status', 'closed');
 		        	link.on('click',onClick);
-		        	link.text("[Play Video]").css('font-weight', 'bold');
+		        	link.html("Play Video").css('font-weight', 'bold');
 		        	//link.html('<a href="https://www.youtube.com/watch?v=' + videoId + '" target="_blank">Play Video</a>');
 		        	//link.html('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>');
 		        	
@@ -100,8 +101,18 @@ $(document).ready(function(){
 	function onClick(){
 		console.log("clicked");
     	vidId = $(this).attr('id');
+    	status = $(this).attr('status');
         console.log(vidId);
-        $('#'+vidId).html('<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/' + vidId + '?rel=0&"&amp;controls=0&autoplay=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
+        console.log(status);
+
+        if (status === 'closed') {
+            $(this).html('Click Here to Close Video<br><br><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/' + vidId + '?rel=0&"&amp;controls=0&autoplay=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
+            $(this).attr('status', 'open');
+        } else {
+            $(this).html("Play Video").css('font-weight', 'bold');
+            $(this).attr('status', 'closed');
+        };
+       
         //$('#'+vidId).html('<object type="application/x-shockwave-flash" width="262" height="25" data="https://www.youtube.com/v/' + vidId + '?version=2&autoplay=1&theme=dark"><param name="movie" value="https://www.youtube.com/v/' + vidId + '?version=2&autoplay=1&theme=dark" /><param name="wmode" value="transparent" /></object>');
 
 	 //  	// 2. This code loads the IFrame Player API code asynchronously.
