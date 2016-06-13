@@ -11,6 +11,7 @@ $(document).ready(function(){
 
 
 	function searchSongs(){
+		$('#results').empty();
 		keyword = keyword.replace(/ /g,"+");
 		console.log(keyword);
 		var queryURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=' + keyword + '&key=' + ytAPIKey;
