@@ -29,27 +29,35 @@ $(document).ready(function(){
 	        	var num = parseInt(key)+1;
 	        	var videoDiv = $('<div>').attr('class', 'video' + num);
 
-	        	var title = results[key].snippet.title;
-	        	videoArray.push(title);
-	        	var pOne = $('<p>').text(num + ". Title: " + title).css({'font-size': '18px',  'font-weight':'bold', 'margin-top':'10px','margin-bottom':'1px'});
-	        	videoDiv.append(pOne);
+	        	if(results[key].id.videoId){
+		        	var title = results[key].snippet.title;
+		        	videoArray.push(title);
+		        	var pOne = $('<p>').text(title).css({'font-size': '12px', 'margin-top':'10px','margin-bottom':'1px'});
+		        	videoDiv.append(pOne);
+		        } else {
+		        	var title = results[key].snippet.title;
+		        	videoArray.push(title);
+		        	var pOne = $('<p>').text(title).css({'font-size': '10px','margin-top':'10px','margin-bottom':'1px'});
+		        	//videoDiv.append(pOne);
+		        	
+		        }
 
 	        	var image = results[key].snippet.thumbnails.default.url;
 	        	videoArray.push(image);
 	        	var pTwo = $('<p>').text("Image: " + image).css('margin','1px');
-	        	videoDiv.append(pTwo);
+	        	//videoDiv.append(pTwo);
 
 	        	var thumbnail = $('<img>');
 					thumbnail.attr('id', 'thumbnails');
 					thumbnail.attr('src', results[key].snippet.thumbnails.default.url);
-				videoDiv.append(thumbnail);
+				//videoDiv.append(thumbnail);
 
 				if(results[key].id.videoId){
-					console.log("videoID");
+					//console.log("videoID");
 					var videoId = results[key].id.videoId;
 		        	videoArray.push(videoId);
 		        	var pThree = $('<p>').text("VideoId: " + videoId).css('margin','1px');
-		        	videoDiv.append(pThree);
+		        	//videoDiv.append(pThree);
 		        	var link = $('<button>');
 		        	link.attr('id', videoId);
 		        	link.attr('status', 'closed');
@@ -60,30 +68,30 @@ $(document).ready(function(){
 		        	
 		        	videoDiv.append(link);
 				} else if (results[key].id.channelId) {
-					console.log("channelId");
+					//console.log("channelId");
 		        	var channelId = results[key].id.channelId;
 					videoArray.push(channelId);
 		        	channelIdArray.push(channelId);
-		        	var pThree = $('<p>').text("ChannelId: " + channelId).css({'margin':'1px','background-color':'yellow', 'width':'400px'});
-		        	videoDiv.append(pThree);
+		        	//var pThree = $('<p>').text("ChannelId: " + channelId).css({'margin':'1px','background-color':'yellow', 'width':'400px'});
+		        	//videoDiv.append(pThree);
 		        } else {
-		        	console.log("playlistId");
+		        	//console.log("playlistId");
 		        	var playlistId = results[key].id.playlistId;
 					videoArray.push(playlistId);
 		        	playlistIdArray.push(playlistId);
-		        	var pThree = $('<p>').text("PlaylistId: " + playlistId).css({'margin':'1px','background-color':'yellow', 'width':'400px'});
-		        	videoDiv.append(pThree);
+		        	//var pThree = $('<p>').text("PlaylistId: " + playlistId).css({'margin':'1px','background-color':'yellow', 'width':'400px'});
+		        	//videoDiv.append(pThree);
 	        	};
 
 	        	$('#results').append(videoDiv);
 
-	        	console.log(videoArray);
+	        	//console.log(videoArray);
 	        	allVideoArray.push(videoArray);
         	});
-        	console.log("==============================");
-        	console.log(allVideoArray);
-        	console.log(channelIdArray);
-        	console.log(playlistIdArray);
+        	//console.log("==============================");
+        	//console.log(allVideoArray);
+        	//console.log(channelIdArray);
+        	//console.log(playlistIdArray);
 
         	return false;
 		});
@@ -99,11 +107,11 @@ $(document).ready(function(){
 
 
 	function onClick(){
-		console.log("clicked");
+		//console.log("clicked");
     	vidId = $(this).attr('id');
     	status = $(this).attr('status');
-        console.log(vidId);
-        console.log(status);
+        //console.log(vidId);
+        //console.log(status);
 
         if (status === 'closed') {
             $(this).html('Click Here to Close Video<br><br><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/' + vidId + '?rel=0&"&amp;controls=0&autoplay=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
